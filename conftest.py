@@ -12,9 +12,8 @@ def pytest_addoption(parser):
     parser.addoption("--mobile", action="store_true")
     parser.addoption("--vnc", action="store_true")
     parser.addoption("--logs", action="store_true")
-    parser.addoption("--video", action="store_true")
     parser.addoption("--bv")
-    parser.addoption("--local", default=True)
+    parser.addoption("--local", default=False)
 
 
 @pytest.fixture
@@ -25,7 +24,6 @@ def browser(request):
     vnc = request.config.getoption("--vnc")
     version = request.config.getoption("--bv")
     logs = request.config.getoption("--logs")
-    video = request.config.getoption("--video")
     mobile = request.config.getoption("--mobile")
 
     executor_url = f"http://{executor}:4444/wd/hub"
